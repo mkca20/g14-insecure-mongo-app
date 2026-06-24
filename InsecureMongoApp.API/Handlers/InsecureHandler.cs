@@ -72,7 +72,7 @@ namespace InsecureMongoApp.API.Handlers
                 var id = Guid.NewGuid().ToString();
 
                 using var rsa = RSA.Create();
-                rsa.KeySize = 1024;
+                rsa.KeySize = 4096;
                 var sigBytes = rsa.SignData(
                     Encoding.UTF8.GetBytes(id),
                     HashAlgorithmName.SHA1,
