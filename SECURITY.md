@@ -1,12 +1,12 @@
-# 🔐 SECURITY.md
+# �� SECURITY.md
 
-## 🧠 Secure Code Review Summary
+## �� Secure Code Review Summary
 
 This document summarizes the findings from a secure code review and automated tools assessment of this application.
 
 ---
 
-## 🔍 Threat Modeling Notes
+## �� Threat Modeling Notes
 
 Link to Confluence page: https://ca-il-confluence.il.cyber-ark.com/spaces/rndp/pages/694873538/Final+Exercise+-+G14
 
@@ -26,17 +26,20 @@ state of the code — when you fix and merge an issue, its alert is resolved on 
 
 ## ⚠️ Key Vulnerabilities Identified
 
-### 1. [Vulnerability Name or Category]
-- **Location**: [File/Class/Method]
-- **Issue**: [Brief description of the issue]
-- **Risk**: [Low / Medium / High / Critical]
-- **Recommendation**: [What should be done to fix it]
+###1. [Sensitive Data Exposure / Broken Authentication]
+- **Location** - 73b2a2e0950474fd95ff8e9871aa5c8304e6467e:.github/workflows/ci.yml:custom-mongodb-uri:81
+- **Issue** - password to MongoDB revealed
+- **Risk** - unauthorized access to DB as admin
+- **Recommendation** - store password in more secure way, (preferably GitHub secret but no permission)
 
-### 2. [Vulnerability Name or Category]
-- **Location**: [File/Class/Method]
-- **Issue**: [Brief description of the issue]
-- **Risk**: [Low / Medium / High / Critical]
-- **Recommendation**: [What should be done to fix it]
+
+
+###1. [Sensitive Data Exposure / Broken Authentication]
+- **Location** - File: InsecureMongoApp.API/Handlers/InsecureHandler.cs Line: 20
+- **Location** - File: InsecureMongoApp.API/Handlers/UserService.cs Line: 16
+- **Issue** - The issue is a hardcoded connection string with plaintext credentials
+- **Risk** - Credential Exposure, Lateral Movement, Persistence in Git History
+- **Recommendation** - Store connection URL in env variable secured/encrypted with DPAPI on the machine
 
 ...
 
@@ -53,5 +56,4 @@ Fill it as you feel for the most high priority vulnerabilities you find
 
 ---
 
-> 📌 Please complete all sections based on your findings. This document is required even if you do not compile or run the application.
-
+> �� Please complete all sections based on your findings. This document is required even if you do not compile or run the application.
