@@ -34,13 +34,26 @@ state of the code — when you fix and merge an issue, its alert is resolved on 
 
 
 
-###1. [Sensitive Data Exposure / Broken Authentication]
+###2. [Sensitive Data Exposure / Broken Authentication]
 - **Location** - File: InsecureMongoApp.API/Handlers/InsecureHandler.cs Line: 20
 - **Location** - File: InsecureMongoApp.API/Handlers/UserService.cs Line: 16
 - **Issue** - The issue is a hardcoded connection string with plaintext credentials
 - **Risk** - Credential Exposure, Lateral Movement, Persistence in Git History
 - **Recommendation** - Store connection URL in env variable secured/encrypted with DPAPI on the machine
 
+###3 Cryptography is not secure enough [SYNK HIGH]
+- **Location** - File:  InsecureMongoApp.API/Handlers/InsecureHandler.cs, line 75
+- **Issue** -  RSA is configured with an insecure 1024-bit key size.
+- **Risk** -It can be feasibly broken, leading to data decryption or impersonation.
+- **Recommendation** - Use at least a 2048-bit RSA key (preferably 3072+ for stronger security).
+...
+
+###3 A hardcoded string is used to encrypt data within [SYNK HIGH]
+- **Location** - File:  InsecureMongoApp.API/Handlers/AuthHandler.cs, line 31
+- **Location** - File: InsecureMongoApp.API/Handlers/AuthHandler.cs, line 58
+- **Issue** -  Token hash is not protected with know secret
+- **Risk** - attacter can prepare his own token
+- **Recommendation** - store the secret in a secure way, for example in env variable secured/encrypted with DPAPI on the machine .
 ...
 
 Fill it as you feel for the most high priority vulnerabilities you find
