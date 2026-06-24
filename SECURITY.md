@@ -8,7 +8,7 @@ This document summarizes the findings from a secure code review and automated to
 
 ## 🔍 Threat Modeling Notes
 
-Link to Confluence page: [https://ca-il-confluence.il.cyber-ark.com/display/RndSec/Threat+Modeling+Template+-+Recommended+Template](https://ca-il-confluence.il.cyber-ark.com/display/RndSec/Threat+Modeling+Template+-+Recommended+Template)
+Link to Confluence page: https://ca-il-confluence.il.cyber-ark.com/spaces/rndp/pages/694873538/Final+Exercise+-+G14
 
 ---
 
