@@ -17,7 +17,9 @@ namespace InsecureMongoApp.API.Handlers
         static InsecureHandler()
         {
             var mongoHost = Environment.GetEnvironmentVariable("MONGO_HOST") ?? "localhost";
-            var mongoUri = $"mongodb://root:example@{mongoHost}:27017/mydb?authSource=admin";
+            var encryptedPassword = Environment.GetEnvironmentVariable("MONGO_PASSWORD_DPAPI");
+            var mongoPassword = ProtectedData.Unprotect(encryptedPassword);
+            var mongoUri = $"mongodb://root:{mongoPassword}@{mongoHost}:27017/mydb?authSource=admin";
             var client = new MongoClient(mongoUri);
             var mongoUrl = new MongoUrl(mongoUri);
             var database = client.GetDatabase(mongoUrl.DatabaseName ?? "mydb");
