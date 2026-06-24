@@ -36,7 +36,7 @@ state of the code — when you fix and merge an issue, its alert is resolved on 
 
 ###1. [Sensitive Data Exposure / Broken Authentication]
 - **Location** - File: InsecureMongoApp.API/Handlers/InsecureHandler.cs Line: 20
-- **Location** - File: InsecureMongoApp.API/Handlers/InsecureHandler.cs Line: 16
+- **Location** - File: InsecureMongoApp.API/Handlers/UserService.cs Line: 16
 - **Issue** - The issue is a hardcoded connection string with plaintext credentials
 - **Risk** - Credential Exposure, Lateral Movement, Persistence in Git History
 - **Recommendation** - Store connection URL in env variable secured/encrypted with DPAPI on the machine
